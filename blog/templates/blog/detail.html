@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>接口渠道资料库</title>
+    <!-- Bootstrap3.3.7 核心 CSS 文件 -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}" crossorigin="anonymous">
+    <!-- Bootstrap3.3.7 核心 JavaScript 文件 -->
+    <script src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+    <style type="text/css">
+        .my_nav_li {
+            margin-right: 6px;
+            font-size: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/blog/index">接口渠道</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="my_nav_li"><a href="/blog/index">首页</a></li>
+                    <li class="my_nav_li"><a href="/blog/iboss">一级boss</a></li>
+                    <li class="my_nav_li"><a href="/blog/channel">渠道</a></li>
+                    <li class="my_nav_li"><a href="/blog/interface">短厅</a></li>
+                    <li class="my_nav_li"><a href="/blog/other">其他</a></li>
+                </ul>
+                <form class="navbar-form navbar-left" method="get" action="/blog/search">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="searchkey" class="form-control" placeholder="Search" required/>
+                    </div>
+                    <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search"></span>搜索
+                    </button>
+                </form>
+            </ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container page-header">
+    <h2 align="center" style="margin-top: 50px">{{ curr_article.title }}
+    </h2>
+    <div>
+        <td>
+            <!--标签功能-->
+            <span style="float: left"><strong>模块: </strong>{{ curr_article.get_lable_display }}</span>
+            <!--修改时间-->
+            <span style="float: right"><strong>修改时间: </strong>{{ curr_article.publish_date|date:"Y-m-d H:i:s" }}</span>
+        </td>
+    </div>
+
+</div>
+<div class="container body-main">
+    <div>
+        {% for section in section_list %}
+            <p>{{ section|safe }}</p>
+        {% endfor %}
+    </div>
+</div>
+<div>
+    <nav aria-label="...">
+        <ul class="pager">
+            <li><a href="/blog/detail/{{ previous_article.article_id }}">上一篇：{{ previous_article.title }}</a></li>
+            <li><a href="/blog/detail/{{ next_article.article_id }}">下一篇：{{ next_article.title }}</a></li>
+        </ul>
+    </nav>
+</div>
+
+</body>
+</html>
