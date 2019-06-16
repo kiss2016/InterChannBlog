@@ -42,7 +42,7 @@
                         <input type="text" name="searchkey" class="form-control" placeholder="Search" required/>
                     </div>
                     <button type="submit" class="btn btn-default">
-                        <span class="glyphicon glyphicon-search"></span>搜索
+                        <span class="glyphicon glyphicon-search"></span> GO
                     </button>
                 </form>
             </ul>
@@ -60,10 +60,11 @@
         <div class="body-main">
             {% for article in article_list %}
                 <div>
-                    <h3><a href="/blog/detail/{{ article.article_id }}">{{ article.title }}</a></h3>
+                    <h4><a href="/blog/detail/{{ article.article_id }}">{{ article.title }}</a></h4>
                     <p>
                         {{ article.brief_content|safe }}
                     </p>
+                    <HR style="border:1 dashed #987cb9" width="100%" color=#987cb9 SIZE=1>
                 </div>
             {% endfor %}
         </div>
@@ -93,7 +94,7 @@
         <div>
             <h4>最新文章</h4>
             {% for article in top6_article_list %}
-                <h4><a href="/blog/detail/{{ article.article_id }}">{{ article.title }}</a></h4>
+                <h5><a href="/blog/detail/{{ article.article_id }}">{{ article.title }}</a></h5>
             {% endfor %}
         </div>
     </div>

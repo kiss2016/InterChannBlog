@@ -42,7 +42,7 @@
                         <input type="text" name="searchkey" class="form-control" placeholder="Search" required/>
                     </div>
                     <button type="submit" class="btn btn-default">
-                        <span class="glyphicon glyphicon-search"></span>搜索
+                        <span class="glyphicon glyphicon-search"></span> GO
                     </button>
                 </form>
             </ul>
@@ -52,24 +52,27 @@
 </nav>
 
 <div class="container page-header">
-    <h2 align="center" style="margin-top: 50px">{{ curr_article.title }}
-    </h2>
-    <div>
-        <td>
-            <!--标签功能-->
-            <span style="float: left"><strong>模块: </strong>{{ curr_article.get_lable_display }}</span>
-            <!--修改时间-->
-            <span style="float: right"><strong>修改时间: </strong>{{ curr_article.publish_date|date:"Y-m-d H:i:s" }}</span>
-        </td>
+    <h2 align="center" style="margin-top: 50px">{{ curr_article.title }}</h2>
+    <div class="row">
+        <div class="col-lg-11 col-md-11 col-sm-11">
+            <td>
+                <!--修改时间-->
+                <span style="float: right"><strong>日期: </strong>{{ curr_article.publish_date|date:"Y-m-d H:i:s" }}</span>
+                <!--标签功能-->
+                <span style="float: right;width: 73%"><strong>模块: </strong>{{ curr_article.get_lable_display }}</span>
+            </td>
+        </div>
     </div>
-
 </div>
 <div class="container body-main">
-    <div>
-        {% for section in section_list %}
-            <p>{{ section|safe }}</p>
-        {% endfor %}
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+            {% for section in section_list %}
+                <p>{{ section|safe }}</p>
+            {% endfor %}
+        </div>
     </div>
+</div>
 </div>
 <div>
     <nav aria-label="...">
@@ -79,6 +82,5 @@
         </ul>
     </nav>
 </div>
-
 </body>
 </html>

@@ -4,7 +4,6 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 
 # Create your models here.
-
 class Article(models.Model):
     # 文章的唯一ID
     article_id = models.AutoField('编号', primary_key=True)
