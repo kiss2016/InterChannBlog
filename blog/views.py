@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from blog.models import Article
 from django.core.paginator import Paginator
+from django.shortcuts import render_to_response
+from django.conf import settings
+
 
 # Create your views here.
 # #测试代码
@@ -22,7 +25,7 @@ from django.core.paginator import Paginator
 #                                                                     publish_date)
 #     return HttpResponse(return_str)
 
-#索引模块，供urls.py调用
+# 索引模块，供urls.py调用
 def get_index_page(request):
     page = request.GET.get('page')
     if page:
@@ -31,7 +34,7 @@ def get_index_page(request):
         page = 1
     print('page param: ', page)
 
-    all_article = Article.objects.all()
+    all_article = Article.objects.get_queryset().order_by('article_id')
     top6_article_list = Article.objects.order_by('-publish_date')[:6]
 
     paginator = Paginator(all_article, 5)
@@ -56,8 +59,10 @@ def get_index_page(request):
                       'previous_page': previous_page,
                       'top6_article_list': top6_article_list
                   }
-                )
-#一级boss模块，供urls.py调用
+                  )
+
+
+# 一级boss模块，供urls.py调用
 def get_iboss_page(request):
     page = request.GET.get('page')
     if page:
@@ -66,7 +71,7 @@ def get_iboss_page(request):
         page = 1
     print('page param: ', page)
 
-    all_article = Article.objects.filter(lable='iboss')
+    all_article = Article.objects.get_queryset().order_by('article_id').filter(lable='iboss')
     top6_article_list = Article.objects.order_by('-publish_date')[:6]
 
     paginator = Paginator(all_article, 5)
@@ -92,7 +97,9 @@ def get_iboss_page(request):
                       'top6_article_list': top6_article_list
                   }
                   )
-#渠道模块，供urls.py调用
+
+
+# 渠道模块，供urls.py调用
 def get_channel_page(request):
     page = request.GET.get('page')
     if page:
@@ -101,7 +108,7 @@ def get_channel_page(request):
         page = 1
     print('page param: ', page)
 
-    all_article = Article.objects.filter(lable='channel')
+    all_article = Article.objects.get_queryset().order_by('article_id').filter(lable='channel')
     top6_article_list = Article.objects.order_by('-publish_date')[:6]
 
     paginator = Paginator(all_article, 5)
@@ -127,7 +134,9 @@ def get_channel_page(request):
                       'top6_article_list': top6_article_list
                   }
                   )
-#短厅模块，供urls.py调用
+
+
+# 短厅模块，供urls.py调用
 def get_interface_page(request):
     page = request.GET.get('page')
     if page:
@@ -136,7 +145,7 @@ def get_interface_page(request):
         page = 1
     print('page param: ', page)
 
-    all_article = Article.objects.filter(lable='interface')
+    all_article = Article.objects.get_queryset().order_by('article_id').filter(lable='interface')
     top6_article_list = Article.objects.order_by('-publish_date')[:6]
 
     paginator = Paginator(all_article, 5)
@@ -162,7 +171,9 @@ def get_interface_page(request):
                       'top6_article_list': top6_article_list
                   }
                   )
-#其他模块，供urls.py调用
+
+
+# 其他模块，供urls.py调用
 def get_other_page(request):
     page = request.GET.get('page')
     if page:
@@ -171,7 +182,7 @@ def get_other_page(request):
         page = 1
     print('page param: ', page)
 
-    all_article = Article.objects.filter(lable='other')
+    all_article = Article.objects.get_queryset().order_by('article_id').filter(lable='other')
     top6_article_list = Article.objects.order_by('-publish_date')[:6]
 
     paginator = Paginator(all_article, 5)
@@ -197,7 +208,9 @@ def get_other_page(request):
                       'top6_article_list': top6_article_list
                   }
                   )
-#文章详情，供urls.py调用
+
+
+# 文章详情，供urls.py调用
 def get_detail_page(request, article_id):
     all_article = Article.objects.all()
     curr_article = None
@@ -234,6 +247,7 @@ def get_detail_page(request, article_id):
                   }
                   )
 
+
 # 根据文章标题模糊搜索
 def search(request):
     keyStr = request.GET.get('searchkey')
@@ -241,3 +255,8 @@ def search(request):
     return render(request, 'blog/result.html',
                   {'search_list': search_list, }
                   )
+
+def PageNotFound(request):
+    response = render_to_response('error/404.html', {})
+    response.status_code = 404
+    return response
