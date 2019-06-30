@@ -1,0 +1,23 @@
+/*html{*/
+    /*backface-visibility: hidden;*/
+    /*-webkit-backface-visibility: hidden; !* Chrome and Safari *!*/
+    /*-moz-backface-visibility: hidden; !* Firefox *!*/
+/*}*/
+body {
+    background: #7d7d7d url(../image/img_detail.jpg);
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -ms-background-size: cover;
+}
+
+.modal-open{
+    overflow-y: scroll;
+}
+.container{
+    padding-right:15px!important;
+}
