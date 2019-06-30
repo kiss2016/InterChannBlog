@@ -13,19 +13,21 @@ body {
     -o-background-size: cover;
     -moz-background-size: cover;
     -ms-background-size: cover;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     /*color: #3E3B36;*/
 }
 
 a {
     text-decoration: none;
-    color: #12306f;
+    /*font-family: Cursive;*/
+    color: #3b5998;
     /*4D8D99*/
 }
 a:hover {
-    color:#2F33AB;
-    font-size:105%;
+    color:#144199;
+    font-size:106%;
+    /*font-weight: bold;*/
+    text-decoration: none;
 }
 
 /* 解决Modal弹出时页面左右移动问题 */
