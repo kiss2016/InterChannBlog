@@ -8,6 +8,7 @@
     <!-- Bootstrap3.3.7 核心 JavaScript 文件 -->
     <script src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" crossorigin="anonymous">
     <style type="text/css">
         .my_nav_li {
             margin-right: 6px;
@@ -15,6 +16,10 @@
             white-space: nowrap;
             overflow: hidden;
             font-weight: bold;
+        }
+        {#右侧添加滚动条#}
+        body{
+            overflow-y:scroll;
         }
     </style>
 </head>

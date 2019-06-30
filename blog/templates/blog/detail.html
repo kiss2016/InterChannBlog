@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load staticfiles %}
     <meta charset="UTF-8">
     <title>接口渠道资料库</title>
     <!-- Bootstrap3.3.7 核心 CSS 文件 -->
@@ -8,6 +9,7 @@
     <!-- Bootstrap3.3.7 核心 JavaScript 文件 -->
     <script src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}" crossorigin="anonymous" />
     <style type="text/css">
         .my_nav_li {
             margin-right: 6px;
@@ -15,6 +17,10 @@
             white-space: nowrap;
             overflow: hidden;
             font-weight: bold;
+        }
+        {#右侧添加滚动条#}
+        body{
+            overflow-y:scroll;
         }
     </style>
 </head>

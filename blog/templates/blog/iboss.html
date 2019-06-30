@@ -8,6 +8,7 @@
     <!-- Bootstrap3.3.7 核心 JavaScript 文件 -->
     <script src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" crossorigin="anonymous">
     <style type="text/css">
         .my_nav_li {
             margin-right: 6px;
@@ -15,6 +16,10 @@
             white-space: nowrap;
             overflow: hidden;
             font-weight: bold;
+        }
+        {#右侧添加滚动条#}
+        body{
+            overflow-y:scroll;
         }
     </style>
 </head>
@@ -62,7 +67,7 @@
             {% for article in article_list %}
                 <div>
                     <h4><a href="/blog/detail/{{ article.article_id }}">{{ article.title }}</a></h4>
-                    <p>
+                    <p style="font-style: oblique">
                         {{ article.brief_content|safe }}
                     </p>
                     <HR style="border:1 dashed #987cb9" width="100%" color=#987cb9 SIZE=1>
