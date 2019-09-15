@@ -25,5 +25,9 @@ class Article(models.Model):
     # 文章的发布日期
     publish_date = models.DateTimeField('发布日期', auto_now=True)
 
+    class Meta:
+        verbose_name = '文章'
+        verbose_name_plural = verbose_name
+
     def __str__(self):
         return self.title
