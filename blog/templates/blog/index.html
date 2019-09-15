@@ -11,16 +11,10 @@
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/index.css' %}" crossorigin="anonymous">
     <style type="text/css">
-        .my_nav_li {
-            margin-right: 6px;
-            font-size: 15px;
-            white-space: nowrap;
-            overflow: hidden;
-            font-weight: bold;
-        }
+
         {#右侧添加滚动条#}
-        body{
-            overflow-y:scroll;
+        body {
+            overflow-y: scroll;
         }
     </style>
 </head>
@@ -37,7 +31,17 @@
             <ul class="navbar-nav navbar-right">
                 <ul class="nav navbar-nav">
                     <li class="active my_nav_li"><a href="/blog/index">首页<span class="sr-only">(current)</span></a></li>
-                    <li class="my_nav_li"><a href="/blog/iboss">一级boss</a></li>
+                    {#                    <li class="my_nav_li"><a href="/blog/iboss">一级boss</a></li>#}
+                    <li class="dropdown">
+                        <a href="/blog/iboss" class="dropdown-toggle my_nav_li" data-toggle="dropdown">一级boss <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu btnbox dropdown-menu-left" role="menu">
+                            <li><a href="/blog/iboss" data-tab="tab-iboss">一级BOSS</a></li>
+                            <li><a href="#feature-tab" data-tab="tab-tools">测试工具</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/blog/protocol" data-tab="tab-protocol">接口协议</a></li>
+                        </ul>
+                    </li>
                     <li class="my_nav_li"><a href="/blog/channel">渠道</a></li>
                     <li class="my_nav_li"><a href="/blog/interface">短厅</a></li>
                     <li class="my_nav_li"><a href="/blog/other">其他</a></li>
@@ -45,7 +49,8 @@
                 <form class="navbar-form navbar-left" method="get" action="/blog/search">
                     {% csrf_token %}
                     <div class="form-group">
-                        <input type="text" name="searchkey" value="" class="form-control" placeholder="Search" required/>
+                        <input type="text" name="searchkey" value="" class="form-control" placeholder="Search"
+                               required/>
                     </div>
                     <button type="submit" class="btn btn-default">
                         <span class="glyphicon glyphicon-search"></span> GO
@@ -98,7 +103,7 @@
     </div>
     <div class="col-md-3" role="complementary">
         <div>
-            <h4>最新文章</h4>
+            <h4>最新文章<span class="label label-danger">new</span></h4>
             {% for article in top6_article_list %}
                 <h5><a href="/blog/detail/{{ article.article_id }}">{{ article.title }}</a></h5>
             {% endfor %}

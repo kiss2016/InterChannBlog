@@ -1,7 +1,7 @@
 /*html{*/
-    /*backface-visibility: hidden;*/
-    /*-webkit-backface-visibility: hidden; !* Chrome and Safari *!*/
-    /*-moz-backface-visibility: hidden; !* Firefox *!*/
+/*backface-visibility: hidden;*/
+/*-webkit-backface-visibility: hidden; !* Chrome and Safari *!*/
+/*-moz-backface-visibility: hidden; !* Firefox *!*/
 /*}*/
 body {
     background: #7d7d7d url(../image/img_index.jpg);
@@ -17,25 +17,39 @@ body {
     /*color: #3E3B36;*/
 }
 
+.my_nav_li {
+    margin-right: 6px;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+}
+
 a {
     text-decoration: none;
     /*font-family: Cursive;*/
     color: #3b5998;
     /*4D8D99*/
 }
+
 a:hover {
-    color:#144199;
-    font-size:106%;
+    color: #144199;
+    font-size: 106%;
     /*font-weight: bold;*/
     text-decoration: none;
 }
 
 /* 解决Modal弹出时页面左右移动问题 */
-.modal-open{
+.modal-open {
     /*overflow-y: scroll;*/
     overflow-y: auto !important;
     padding-right: 0 !important;
 }
-.container{
-    padding-right:15px!important;
+
+.container {
+    padding-right: 15px !important;
+}
+
+.btnbox {
+    background-color: #FFFFFF !important;
 }

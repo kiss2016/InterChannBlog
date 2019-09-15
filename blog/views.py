@@ -99,6 +99,12 @@ def get_iboss_page(request):
                   )
 
 
+# 一级boss接口协议模块，供urls.py调用
+def get_protocol_page(request):
+    # all_article = Article.objects.get_queryset().order_by('article_id').filter(lable='tocol')
+    return render(request, 'blog/protocol/protocol.html')
+
+
 # 渠道模块，供urls.py调用
 def get_channel_page(request):
     page = request.GET.get('page')
@@ -248,6 +254,44 @@ def get_detail_page(request, article_id):
                   )
 
 
+# 接口协议详情，供urls.py调用
+def get_standardetail_page(request, article_id):
+    all_article = Article.objects.get_queryset().order_by('article_id').filter(lable='tocol')
+    curr_article = None
+    previous_index = 0
+    next_index = 0
+    previous_article = None
+    next_article = None
+    for index, article in enumerate(all_article):
+        if index == 0:
+            previous_index = 0
+            next_index = index + 1
+        elif index == len(all_article) - 1:
+            previous_index = index - 1
+            next_index = index
+        else:
+            previous_index = index - 1
+            next_index = index + 1
+        if article.article_id == article_id:
+            curr_article = article
+            previous_article = all_article[previous_index]
+            try:
+                next_article = all_article[next_index]
+            except:
+                next_article = all_article[index]
+            break
+
+    section_list = curr_article.content.split('\n')
+    return render(request, 'blog/protocol/standardetail.html',
+                  {
+                      'curr_article': curr_article,
+                      'section_list': section_list,
+                      'previous_article': previous_article,
+                      'next_article': next_article
+                  }
+                  )
+
+
 # 根据文章标题模糊搜索
 def search(request):
     keyStr = request.GET.get('searchkey')
@@ -256,7 +300,6 @@ def search(request):
                   {'search_list': search_list, }
                   )
 
+
 def PageNotFound(request):
-    response = render_to_response('error/404.html', {})
-    response.status_code = 404
-    return response
+    return render(request, 'error/404.html')

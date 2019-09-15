@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>接口渠道资料库</title>
+    <!-- Bootstrap3.3.7 核心 CSS 文件 -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}" crossorigin="anonymous">
+    <!-- Bootstrap3.3.7 核心 JavaScript 文件 -->
+    <script src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/protocol.css' %}" crossorigin="anonymous"/>
+    <style type="text/css">
+        .my_nav_li {
+            margin-right: 6px;
+            font-size: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".main_left li").on("click", function () {
+                var address = $(this).attr("data-src");
+                $("iframe").attr("src", address);
+            });
+        });
+    </script>
+    <script>
+        function changeFrameHeight() {
+            var ifm = document.getElementById("show");
+            ifm.height = document.documentElement.clientHeight - 56;
+        }
+
+        window.onresize = function () {
+            changeFrameHeight();
+        }
+        $(function () {
+            changeFrameHeight();
+        });
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/blog/index">接口渠道</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="my_nav_li"><a href="/blog/index">首页</a></li>
+                    <li class="my_nav_li"><a href="/blog/iboss">一级boss</a></li>
+                    <li class="my_nav_li"><a href="/blog/channel">渠道</a></li>
+                    <li class="my_nav_li"><a href="/blog/interface">短厅</a></li>
+                    <li class="my_nav_li"><a href="/blog/other">其他</a></li>
+                </ul>
+                <form class="navbar-form navbar-left" method="get" action="/blog/search">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="searchkey" value="" class="form-control" placeholder="Search"
+                               required/>
+                    </div>
+                    <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search"></span> GO
+                    </button>
+                </form>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!-- 左侧导航栏 -->
+<div class="navbar  navbar-static-top" role="navigation"></div>
+<div class="container-fluid page-body main_left">
+    <div class="col-md-3" role="main">
+        <ul id="main-nav" class="nav nav-tabs nav-stacked">
+            <li class="active">
+                <a href="#collapseOne" class="nav-header collapsed" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-th-list"></i> 协议规范
+                    {#                    <span class="pull-right glyphicon glyphicon-th-list"></span>#}
+                </a>
+                <ul id="collapseOne" class="nav nav-list collapse levelmenu in">
+                    <li><a href="#collapseTwo" class="nav-header collapsed" data-toggle="collapse">
+                        <i class="glyphicon glyphicon-book"></i> T模块
+                        <span class="pull-right glyphicon glyphicon-triangle-bottom"></span>
+                    </a>
+                        <ul id="collapseTwo" class="nav nav-list collapse levelmenu">
+                            <li data-src="/blog/protocol/standardetail/2">
+                                <a class="glyphicon glyphicon-leaf"> 移动商城</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#collapseThree" class="nav-header collapsed" data-toggle="collapse">
+                        <i class="glyphicon glyphicon-book"></i> R模块
+                        <span class="pull-right glyphicon glyphicon-triangle-bottom"></span>
+                    </a>
+                        <ul id="collapseThree" class="nav nav-list collapse levelmenu">
+                            <li data-src="/blog/protocol/standardetail/2">
+                                <a class="glyphicon glyphicon-leaf"> 手机动漫</a>
+                            </li>
+                            <li data-src="/blog/protocol/standardetail/2">
+                                <a class="glyphicon glyphicon-leaf"> 手机咪咕</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 右侧内容 -->
+    <div class="col-md-9" role="complementary" style="margin-bottom: 10px">
+        <iframe frameborder="0" scrolling="auto" style="width:102%" src="" id="show"></iframe>
+    </div>
+</div>
+
+
+</body>
+</html>
