@@ -76,28 +76,50 @@
         <div class="body-footer">
             <div align="center">
                 <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        <li>
-                            <a href="/blog/other?page={{ previous_page }}" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        {% for num in page_num %}
-                            <li><a href="/blog/other?page={{ num }}">{{ num }}</a></li>
-                        {% endfor %}
-                        <li>
-                            <a href="/blog/other?page={{ next_page }}" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
+                    {% if data %}
+                        <ul id="pages" class="pagination pagination-sm pagination-xs">
+                            <li>
+                                <a href="/blog/other?page={{ data.previous_page }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {% if data.first %}
+                                <li><a href="/blog/other?page=1">1</a></li>
+                            {% endif %}
+                            {% if data.left %}
+                                {% if data.left_has_more %}
+                                    <li><span>...</span></li>
+                                {% endif %}
+                                {% for i in data.left %}
+                                    <li><a href="/blog/other?page={{ i }}">{{ i }}</a></li>
+                                {% endfor %}
+                            {% endif %}
+                            <li class="active"><a href="/blog/other?page={{ data.page }}">{{ data.page }}</a></li>
+                            {% if data.right %}
+                                {% for i in data.right %}
+                                    <li><a href="/blog/other?page={{ i }}">{{ i }}</a></li>
+                                {% endfor %}
+                                {% if data.right_has_more %}
+                                    <li><span>...</span></li>
+                                {% endif %}
+                            {% endif %}
+                            {% if data.last %}
+                                <li><a href="/blog/other?page={{ data.total_pages }}">{{ data.total_pages }}</a></li>
+                            {% endif %}
+                            <li>
+                                <a href="/blog/other?page={{ data.next_page }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    {% endif %}
                 </nav>
             </div>
         </div>
     </div>
     <div class="col-md-3" role="complementary">
         <div>
-            <h4>最新文章</h4>
+            <h4>最新文章<span class="label label-danger">new</span></h4>
             {% for article in top6_article_list %}
                 <h5><a href="/blog/detail/{{ article.article_id }}">{{ article.title }}</a></h5>
             {% endfor %}

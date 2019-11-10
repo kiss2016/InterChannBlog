@@ -9,6 +9,7 @@ from .models import Article
 class BlogAdmin(object):
     list_display = ['article_id', 'title', 'publish_date']
     list_filter = ['article_id', 'title']
+    list_display_links = ['title']
 
 # 注册该模型
 xadmin.site.register(Article, BlogAdmin)

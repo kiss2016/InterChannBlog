@@ -17,7 +17,7 @@ class Article(models.Model):
         ('other', u'其他'),
         ('tocol', u'协议'),
     )
-    lable = models.CharField('模块', max_length=16, choices=labels, default=None, blank=False)
+    lable = models.CharField('模块', max_length=32, choices=labels, default=None, blank=False)
     # 文章的摘要
     brief_content = models.TextField('摘要', blank=True)
     # 文章的主要内容
