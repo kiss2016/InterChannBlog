@@ -1,0 +1,54 @@
+{% extends 'base_static.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>查询结果</title>
+    <!-- Bootstrap3.3.7 核心 CSS 文件 -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}" crossorigin="anonymous">
+    <!-- Bootstrap3.3.7 核心 JavaScript 文件 -->
+    <script src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" crossorigin="anonymous">
+    <style type="text/css">
+        .my_nav_li {
+            margin-right: 6px;
+            font-size: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            font-weight: bold;
+        }
+        {#右侧添加滚动条#}
+        body{
+            overflow-y:scroll;
+        }
+
+
+    </style>
+</head>
+<body>
+{#{% block header_navbar %}{% endblock %}#}
+
+{% block body %}
+<div class="container page-body">
+    <div style="margin-top: 100px;margin-left: 90px" role="main">
+        <div class="body-main">
+            {% if search_list %}
+            {% for article in search_list %}
+            <div>
+                <h4><a href="/blog/detail/{{ article.article_id }}">{{ article.title }}</a></h4>
+                {# <p>#}
+                {# {{ article.brief_content|safe }}#}
+                {# </p>#}
+                <HR style="border:1 dashed #987cb9" width="100%" color=#987cb9 SIZE=1>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div id="not-found" class="container">
+                <img src="{% static 'image/404.jpg' %}" alt="404" height="300" width="300"
+                     style="margin-left: 220px"/>
+                <h4 style="margin-left: 305px">没找到哟</h4>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

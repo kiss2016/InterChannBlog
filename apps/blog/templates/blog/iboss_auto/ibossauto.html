@@ -1,0 +1,53 @@
+{% extends 'base_static.html' %}
+{#{% block header_navbar %}{% endblock %}#}
+
+
+{% block extra_script %}
+<script>
+        $(function () {
+            $(".main_left li").on("click", function () {
+                var address = $(this).attr("data-src");
+                $("iframe").attr("src", address);
+            });
+        });
+
+
+</script>
+<script>
+        function changeFrameHeight() {
+            var ifm = document.getElementById("show");
+            ifm.height = document.documentElement.clientHeight - 56;
+        }
+
+        window.onresize = function () {
+            changeFrameHeight();
+        }
+        $(function () {
+            changeFrameHeight();
+        });
+
+
+</script>
+{% endblock %}
+
+{% block body %}
+
+<!-- 左侧导航栏 -->
+<div class="navbar  navbar-static-top" role="navigation"></div>
+<div class="container-fluid page-body main_left">
+    <div class="col-md-1 col-sm-1 sidebar-offcanvas" id="sidebar" style="margin-top: 90px" role="main">
+        <div class="list-group">
+            <li data-src="CQiboss" class="list-group-item" id="CQiboss" href="javascript:void(0)">重庆</li>
+            <li data-src="SDiboss" class="list-group-item" id="SDiboss" href="javascript:void(0)">山东</li>
+            <li data-src="HUBiboss" class="list-group-item" id="HUBiboss" href="javascript:void(0)">湖北</li>
+            <li data-src="HEBiboss" class="list-group-item" id="HEBiboss" href="javascript:void(0)">河北</li>
+        </div>
+    </div>
+
+
+    <!-- 右侧内容 -->
+    <div class="col-md-11" role="complementary" style="margin-bottom: 10px">
+        <iframe frameborder="0" scrolling="auto" style="width:102%" src="" id="show"></iframe>
+    </div>
+</div>
+{% endblock %}

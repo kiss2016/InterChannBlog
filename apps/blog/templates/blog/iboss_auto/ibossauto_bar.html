@@ -1,0 +1,29 @@
+{% extends 'base_static.html' %}
+{#{% block header_navbar %}{% endblock %}#}
+
+{% block body %}
+<div id="bar" style="width:700px; height:400px; margin-top: 60px"></div>
+<script>
+        var chart = echarts.init(document.getElementById('bar'), 'white', {renderer: 'canvas'});
+
+        $(
+            function () {
+                fetchData(chart);
+            }
+        );
+
+        function fetchData() {
+            $.ajax({
+                type: "GET",
+                url: "/blog/bardata",
+                dataType: 'json',
+                success: function (result) {
+                    chart.setOption(result.data);
+                }
+            });
+        }
+
+
+
+</script>
+{% endblock %}

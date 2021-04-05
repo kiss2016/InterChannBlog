@@ -1,0 +1,75 @@
+{% extends 'base_static.html' %}
+
+{% block body %}
+<div class="container page-header">
+    <h2 style="margin-top: 50px" class="col-md-9" align="center">渠道资料库
+        {#        <small> —— by liums</small>#}
+    </h2>
+</div>
+<div class="container page-body">
+    <div class="col-md-9" role="main">
+        <div class="body-main">
+            {% for article in article_list %}
+                <div>
+                    <h4><a href="/blog/detail/{{ article.article_id }}">{{ article.title }}</a></h4>
+                    <p style="font-style: oblique">
+                        {{ article.brief_content|safe }}
+                    </p>
+                    <HR style="border:1 dashed #987cb9" width="100%" color=#987cb9 SIZE=1>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="body-footer">
+            <div align="center">
+                <nav aria-label="Page navigation">
+                    {% if data %}
+                        <ul id="pages" class="pagination pagination-sm pagination-xs">
+                            <li>
+                                <a href="/blog/channel?page={{ data.previous_page }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {% if data.first %}
+                                <li><a href="/blog/channel?page=1">1</a></li>
+                            {% endif %}
+                            {% if data.left %}
+                                {% if data.left_has_more %}
+                                    <li><span>...</span></li>
+                                {% endif %}
+                                {% for i in data.left %}
+                                    <li><a href="/blog/channel?page={{ i }}">{{ i }}</a></li>
+                                {% endfor %}
+                            {% endif %}
+                            <li class="active"><a href="/blog/channel?page={{ data.page }}">{{ data.page }}</a></li>
+                            {% if data.right %}
+                                {% for i in data.right %}
+                                    <li><a href="/blog/channel?page={{ i }}">{{ i }}</a></li>
+                                {% endfor %}
+                                {% if data.right_has_more %}
+                                    <li><span>...</span></li>
+                                {% endif %}
+                            {% endif %}
+                            {% if data.last %}
+                                <li><a href="/blog/channel?page={{ data.total_pages }}">{{ data.total_pages }}</a></li>
+                            {% endif %}
+                            <li>
+                                <a href="/blog/channel?page={{ data.next_page }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3" role="complementary">
+        <div>
+            <h4>最新文章<span class="label label-danger">new</span></h4>
+                {% for article in top6_article_list %}
+                    <h5><a href="/blog/detail/{{ article.article_id }}">{{ article.title }}</a></h5>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

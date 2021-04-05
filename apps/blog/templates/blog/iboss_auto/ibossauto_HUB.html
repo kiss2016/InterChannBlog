@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>一级boss自动化结果报告</title>
+    <!-- Bootstrap3.3.7 核心 CSS 文件 -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}" crossorigin="anonymous">
+    <!-- Bootstrap3.3.7 核心 JavaScript 文件 -->
+    <script src="{% static 'js/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/echarts/echarts.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/protocol.css' %}" crossorigin="anonymous"/>
+    <!--    <script type="text/javascript" src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>-->
+    <!--    <link rel="stylesheet" href="{% static 'css/index.css' %}" crossorigin="anonymous">-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <style type="text/css">
+        {#右侧添加滚动条#}
+        body {
+            overflow-y: scroll;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="row row-offcanvas row-offcanvas-right">
+    <!--/.sidebar-offcanvas-->
+    <div class="col-md-11 col-sm-11">
+        <h3 align="center">湖北一级boss自动化报告</h3>
+        <div class="container page-header">
+            <div id="pie" style="width:600px; height:300px;" class="col-md-6 col-sm-6"></div>
+            <script>
+                var chart = echarts.init(document.getElementById('pie'), 'white', {renderer: 'canvas'});
+                $(
+                    function () {
+                        fetchData(chart);
+        <!--                每10秒请求一次后台-->
+        <!--                setInterval(fetchData, 10000);-->
+                    }
+                );
+
+                function fetchData() {
+                    $.ajax({
+                        type: "GET",
+                        url: "/blog/piedata",
+                        dataType: 'json',
+                        success: function (result) {
+                            chart.setOption(result.data);
+                        }
+                    });
+                }
+
+
+
+            </script>
+            <div class="col-md-5 col-sm-5" role="complementary">
+                <div id="bar" style="width:600px; height:330px;"></div>
+                <script>
+                    var chartBar = echarts.init(document.getElementById('bar'), 'white', {renderer: 'canvas'});
+                    $(
+                        function () {
+                            fetchDataBar(chartBar);
+            <!--                每10秒请求一次后台-->
+            <!--                setInterval(fetchData, 10000);-->
+                        }
+                    );
+
+                    function fetchDataBar() {
+                        $.ajax({
+                            type: "GET",
+                            url: "/blog/bardata",
+                            dataType: 'json',
+                            success: function (result) {
+                                chartBar.setOption(result.data);
+                            }
+                        });
+                    }
+
+
+
+                </script>
+            </div>
+        </div>
+        <div class="container" style="margin-left: 40px">
+            <h2>自动化交易详情</h2>
+            <p style="font-family: Cursive; font-size: 16px">用例总数：227，成功：214，失败：12</p>
+            <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>交易模块</th>
+                    <th>交易编码</th>
+                    <th>状态</th>
+                    <th>返回码</th>
+                    <th>详情描述</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>T_jcrm</td>
+                    <td>BIP-300810-T202109</td>
+                    <td>成功</td>
+                    <td>0000</td>
+                    <td>success</td>
+                    <td>
+                        <button>执行</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>T_jcrm</td>
+                    <td>BIP-300810-T202109</td>
+                    <td>成功</td>
+                    <td>0000</td>
+                    <td>success</td>
+                    <td>
+                        <button>执行</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>T_jcrm</td>
+                    <td>BIP-300810-T202109</td>
+                    <td>成功</td>
+                    <td>0000</td>
+                    <td>success</td>
+                    <td>
+                        <button>执行</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>T_jcrm</td>
+                    <td>BIP-300810-T202109</td>
+                    <td>成功</td>
+                    <td>0000</td>
+                    <td>success</td>
+                    <td>
+                        <button>执行</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>T_jcrm</td>
+                    <td>BIP-300810-T202109</td>
+                    <td>成功</td>
+                    <td>0000</td>
+                    <td>success</td>
+                    <td>
+                        <button>执行</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+

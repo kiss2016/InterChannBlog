@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}接口渠道-注册{% endblock %}
+{% block topfiles %}
+    <script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/register.js' %}"></script>
+{% endblock %}
+{% block header_con %}{% endblock %}
+{% block search_bar %}{% endblock %}
+
+{% block body %}
+    <div class="login_form_bg">
+        <div class="register_con">
+            <div class="r_con fr">
+                <div class="reg_title clearfix">
+                    <h1>用户注册</h1>
+                    <a href="/user/login">登录</a>
+                </div>
+                <div class="reg_form clearfix">
+                    <form method="post" action="/user/register">
+                        {% csrf_token %}
+                        <ul>
+                            <li>
+                                <label>用户名:</label>
+                                <input type="text" name="user_name" id="user_name" required>
+                                <span class="error_tip">提示信息</span>
+                            </li>
+                            <li>
+                                <label>密 码:</label>
+                                <input type="password" name="pwd" id="pwd" required>
+                                <span class="error_tip">提示信息</span>
+                            </li>
+                            <li>
+                                <label>确认密码:</label>
+                                <input type="password" name="cpwd" id="cpwd" required>
+                                <span class="error_tip">提示信息</span>
+                            </li>
+                            <li>
+                                <label>邮箱:</label>
+                                <input type="text" name="email" id="email" required>
+                                <span class="error_tip">提示信息</span>
+                            </li>
+                            <li class="reg_sub">
+                                <input type="submit" value="注 册" name="">
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+                {{ errmsg }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

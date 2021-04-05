@@ -1,0 +1,58 @@
+{# 首页 注册 登录 #}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+{% load staticfiles %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    {# 网页标题内容块 #}
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    {# 网页顶部引入文件块 #}
+    {% block topfiles %}{% endblock %}
+</head>
+<body>
+{# 网页顶部欢迎信息块 #}
+{% block header_con %}
+    <div class="header_con">
+        <div class="header">
+{#            <div class="welcome fl">欢迎来到天天生鲜!</div>#}
+            <div class="fr">
+                {% if user.is_authenticated %}
+                    <div class="login_btn fl">
+                        欢迎您：<em>{{ user.username }}</em>
+                        <span>|</span>
+                        <a href="{% url 'user:logout' %}">退出</a>
+                    </div>
+                {% else %}
+                    <div class="login_btn fl">
+                        <a href="{% url 'user:login' %}">登录</a>
+                        <span>|</span>
+                        <a href="{% url 'user:register' %}">注册</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{# 网页主体内容块 #}
+{% block body %}{% endblock %}
+<div class="footer">
+    <div class="foot_link">
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">联系我们</a>
+        <span>|</span>
+        <a href="#">友情链接</a>
+    </div>
+    <p>CopyRight © 2021 接口渠道资料库 All Rights Reserved</p>
+</div>
+{# 网页底部html引入元素块 #}
+{% block bottom %}{% endblock %}
+
+{# 网页底部引入文件块 #}
+{% block bottomfiles %}{% endblock %}
+</body>
+</html>
