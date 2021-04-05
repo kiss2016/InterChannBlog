@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f98c3ed7-19b4-410f-bbf3-d16c5bf85534" name="Default Changelist" comment="重新编写分页，前后分离，使用paginator">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/InterChannBlog.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/migrations/0002_auto_20190414_2005.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/urls.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="33be1fa6-5310-4d57-8b98-d3718c1d69fb" value="Green" />
+    </colors>
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="4f354187-5cf5-4bbc-9ced-f78d9f3a21df" />
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1iSEI7ei3TcbCmsO7Djnksgvk3l" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ChangesTree.GroupingKeys" value="module&#10;directory" />
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="image.js&#9;FILE&#9;file://D:/liums/InterChannBlog/static/ckeditor/ckeditor/plugins/image/dialogs/image.js" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573401207011" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Python/myblog/DjangoBlog-master" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\liums\InterChannBlog\blog\templates\blog\protocol" />
+      <recent name="D:\liums\InterChannBlog\static\css" />
+      <recent name="D:\liums\InterChannBlog\static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\liums\InterChannBlog\blog\templates\blog\protocol" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django Server.DjangoBlog-master">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Django-Blog-master" type="Python.DjangoServer" factoryName="Django server">
+      <module name="Django-Blog-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DjangoBlog-master" type="Python.DjangoServer" factoryName="Django server">
+      <module name="DjangoBlog-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="django-blog-tutorial-master" type="Python.DjangoServer" factoryName="Django server">
+      <module name="django-blog-tutorial-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f98c3ed7-19b4-410f-bbf3-d16c5bf85534" name="Default Changelist" comment="" />
+      <created>1560687601144</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1560687601144</updated>
+      <workItem from="1560687603606" duration="22121000" />
+      <workItem from="1560896938591" duration="4687000" />
+      <workItem from="1561042022899" duration="220000" />
+      <workItem from="1561299167616" duration="2742000" />
+      <workItem from="1561810817078" duration="26933000" />
+      <workItem from="1567911454100" duration="4079000" />
+      <workItem from="1568441529817" duration="9877000" />
+      <workItem from="1568452937247" duration="43024000" />
+      <workItem from="1568732752211" duration="1348000" />
+      <workItem from="1568815010652" duration="3094000" />
+      <workItem from="1571662446916" duration="1998000" />
+      <workItem from="1573370935065" duration="575000" />
+      <workItem from="1573371587974" duration="60000" />
+      <workItem from="1573371696985" duration="11025000" />
+      <workItem from="1575186383374" duration="297000" />
+      <workItem from="1601892514318" duration="238000" />
+      <workItem from="1601895316716" duration="805000" />
+      <workItem from="1601896345386" duration="4946000" />
+      <workItem from="1609560071358" duration="7845000" />
+      <workItem from="1609579485813" duration="1778000" />
+      <workItem from="1609581935985" duration="46000" />
+      <workItem from="1609582025606" duration="1260000" />
+    </task>
+    <task id="LOCAL-00001" summary="调整页面布局：文章列表添加分割线；调整标签显示">
+      <created>1560694923513</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1560694923513</updated>
+    </task>
+    <task id="LOCAL-00002" summary="删除多余文件">
+      <created>1560695522200</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1560695522200</updated>
+    </task>
+    <task id="LOCAL-00003" summary="优化搜索功能，修改页面分页问题">
+      <created>1560868588924</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1560868588924</updated>
+    </task>
+    <task id="LOCAL-00004" summary="优化分页，修改为排序方式（get_queryset().order_by('article_id')）">
+      <created>1561042223009</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1561042223009</updated>
+    </task>
+    <task id="LOCAL-00005" summary="调整页面样式，添加css">
+      <created>1561862651626</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1561862651626</updated>
+    </task>
+    <task id="LOCAL-00006" summary="添加css样式和背景图">
+      <created>1561862778304</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1561862778304</updated>
+    </task>
+    <task id="LOCAL-00007" summary="调整文章列表样式">
+      <created>1561866400841</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1561866400841</updated>
+    </task>
+    <task id="LOCAL-00008" summary="导航栏添加下拉子级菜单；新增协议规范展示页">
+      <created>1568531525364</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1568531525364</updated>
+    </task>
+    <task id="LOCAL-00009" summary="优化xadmin展示">
+      <created>1568565548548</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1568565548548</updated>
+    </task>
+    <task id="LOCAL-00010" summary="重新编写分页，前后分离，使用paginator">
+      <created>1573400838292</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1573400838292</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="调整页面布局：文章列表添加分割线；调整标签显示" />
+    <MESSAGE value="删除多余文件" />
+    <MESSAGE value="优化搜索功能，修改页面分页问题" />
+    <MESSAGE value="优化分页，修改为排序方式（get_queryset().order_by('article_id')）" />
+    <MESSAGE value="调整页面样式，添加css" />
+    <MESSAGE value="添加css样式和背景图" />
+    <MESSAGE value="调整文章列表样式" />
+    <MESSAGE value="导航栏添加下拉子级菜单；新增协议规范展示页" />
+    <MESSAGE value="优化xadmin展示" />
+    <MESSAGE value="重新编写分页，前后分离，使用paginator" />
+    <option name="LAST_COMMIT_MESSAGE" value="重新编写分页，前后分离，使用paginator" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="426" y="108" key="#Inspections" timestamp="1609564116807">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="426" y="108" key="#Inspections/0.0.1600.860@0.0.1600.860" timestamp="1609564116807" />
+    <state x="392" y="71" key="#Plugins" timestamp="1609582036479">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="392" y="71" key="#Plugins/0.0.1600.860@0.0.1600.860" timestamp="1609582036479" />
+    <state x="280" y="4" key="#Project_Structure" timestamp="1609580455828">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="280" y="4" key="#Project_Structure/0.0.1600.860@0.0.1600.860" timestamp="1609580455828" />
+    <state x="774" y="40" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609560607372">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="774" y="40" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860@0.0.1600.860" timestamp="1609560607372" />
+    <state x="480" y="165" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1609580423269">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="480" y="165" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.860@0.0.1600.860" timestamp="1609580423269" />
+    <state x="580" y="170" key="FileChooserDialogImpl" timestamp="1609583323083">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="580" y="170" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1609583323083" />
+    <state width="1203" height="215" key="GridCell.Tab.0.bottom" timestamp="1609561295281">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1203" height="215" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1609561295281" />
+    <state width="1203" height="215" key="GridCell.Tab.0.center" timestamp="1609561295281">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1203" height="215" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1609561295281" />
+    <state width="1203" height="215" key="GridCell.Tab.0.left" timestamp="1609561295281">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1203" height="215" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1609561295281" />
+    <state width="1203" height="215" key="GridCell.Tab.0.right" timestamp="1609561295281">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1203" height="215" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1609561295281" />
+    <state width="220" height="539" key="HiddenNamespacesPopup" timestamp="1609560734745">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="220" height="539" key="HiddenNamespacesPopup/0.0.1600.860@0.0.1600.860" timestamp="1609560734745" />
+    <state x="280" y="4" key="SettingsEditor" timestamp="1609582327938">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="280" y="4" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1609582327938" />
+    <state x="503" y="146" width="594" height="568" key="find.popup" timestamp="1609583276627">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="503" y="146" width="594" height="568" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1609583276627" />
+    <state x="433" y="0" key="new project wizard" timestamp="1609582319076">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="433" y="0" key="new project wizard/0.0.1600.860@0.0.1600.860" timestamp="1609582319076" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
