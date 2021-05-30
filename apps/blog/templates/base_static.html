@@ -11,8 +11,7 @@
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'js/echarts/echarts.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/protocol.css' %}" crossorigin="anonymous"/>
-<!--    <script type="text/javascript" src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>-->
-<!--    <link rel="stylesheet" href="{% static 'css/index.css' %}" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <style type="text/css">
         {#右侧添加滚动条#}
@@ -51,7 +50,15 @@
                         </li>
                         <li class="my_nav_li"><a href="/blog/channel">渠道</a></li>
                         <li class="my_nav_li"><a href="/blog/interface">短厅</a></li>
-                        <li class="my_nav_li"><a href="/blog/other">其他</a></li>
+                        <li class="dropdown">
+                            <a href="/blog/other" class="dropdown-toggle my_nav_li" data-toggle="dropdown">其他<span
+                                    class="caret"></span></a>
+                            <ul class="dropdown-menu btnbox dropdown-menu-left" role="menu">
+                                <li><a href="/blog/other" data-tab="tab-iboss">知识</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/blog/autoTools" data-tab="tab-protocol">小工具</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </ul>
                 <ul class="navbar-nav navbar-right">

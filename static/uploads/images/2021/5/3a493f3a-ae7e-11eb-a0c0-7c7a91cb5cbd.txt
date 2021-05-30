@@ -1,0 +1,57 @@
+方法一）使用js脚本直接操作，方法如下：
+js="var q=document.documentElement.scrollTop=10000"
+driver.execute_script(js)
+
+这里的id为滚动条的id，但js中没有xpath的方法，所以滚动条没有id的网页此方法不适用
+
+#将滚动条移动到页面的顶部
+js="var q=document.documentElement.scrollTop=0"
+driver.execute_script(js)
+
+#若要对页面中的内嵌窗口中的滚动条进行操作，要先定位到该内嵌窗口，在进行滚动条操作
+js="var q=document.getElementById('id').scrollTop=100000"
+driver.execute_script(js)
+
+横向滚动条
+1.有时候浏览器页面需要左右滚动（一般屏幕最大化后，左右滚动的情况已经很少见了）。
+2.通过左边控制横向和纵向滚动条scrollTo(x, y）js = "window.scrollTo(100,400);"
+driver.execute_script(js)
+3.第一个参数x是横向距离，第二个参数y是纵向距离
+
+方法二）使用js脚本拖动到指定地方
+元素聚焦：让页面直接跳到元素出现的位置，然后就可以操作了。同样需要借助JS去实现。
+target = driver.find_element_by_id("id_keypair")
+driver.execute_script("arguments[0].scrollIntoView();", target) #拖动到可见的元素去
+
+
+这个方法可以将滚动条拖动到需要显示的元素位置，此方法用途比较广，可以使用
+
+driver.find_element_by_xpath("//div[@id='search']/div/span/input").click()
+        target = driver.find_element_by_id("_easyui_tree_17")
+        driver.execute_script("arguments[0].scrollIntoView();", target) #拖动到可见的元素去
+        driver.find_element_by_xpath("//span[@class='tree-title'][text()='专业测试.修改后/123456']"
+		
+
+from selenium.webdriver.common.keys import Keys
+#通过按向下键将页面滚动条拖到底部
+driver.find_element_by_xpath("//*[@id='wrapper_wrapper']").send_keys(Keys.DOWN)
+
+scrollTo函数：
+--scrollHeight 获取对象的滚动高度。 
+--scrollLeft 设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离。 
+--scrollTop 设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离。 
+--scrollWidth 获取对象的滚动宽度。 
+
+#滚动到底部
+js = "window.scrollTo(0,document.body.scrollHeight)"
+driver.execute_script(js)
+
+#滚动到顶部
+js = "window.scrollTo(0,0)"
+driver.execute_script(js)
+
+测试可用
+js="window.scrollTo(0, document.body.scrollHeight); var lenOfPage=document.body.scrollHeight; return lenOfPage;"
+driver.execute_script(js)
+
+

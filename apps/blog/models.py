@@ -1,6 +1,5 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-# from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 
@@ -23,9 +22,9 @@ class Article(models.Model):
     # 文章的摘要
     brief_content = models.TextField('摘要', blank=True)
     # 文章的主要内容
-    # content = RichTextField('内容', blank=False)
-    content = RichTextField(blank=True, null=True, verbose_name="内容")
-    # content = RichTextUploadingField('内容',blank=False)
+    content = models.TextField('内容', blank=False)
+    # content = RichTextField(blank=True, null=True, verbose_name="内容")
+    # content = models.TextField('内容',blank=False)
     # 文章的发布日期
     publish_date = models.DateTimeField('发布日期', auto_now=True)
     # 定义文章作者。 author 通过 models.ForeignKey 外键与内建的 User 模型关联在一

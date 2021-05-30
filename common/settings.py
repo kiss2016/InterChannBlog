@@ -16,8 +16,9 @@ from django.utils.translation import gettext_lazy as _STATICFILES_DIRS
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, BASE_DIR)
+# sys.path.insert(0, BASE_DIR)
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(1, os.path.join(BASE_DIR, 'extra_apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -34,6 +35,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'simpleui',
+    'blog.apps.SuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -153,18 +155,14 @@ STATICFILES_DIRS = (
     ('images', os.path.join(STATIC_ROOT, 'images').replace('\\', '/')),
     ('image', os.path.join(STATIC_ROOT, 'image').replace('\\', '/')),
     ('uploads', os.path.join(STATIC_ROOT, 'uploads').replace('\\', '/')),
+    ('ckeditor', os.path.join(STATIC_ROOT, 'ckeditor').replace('\\', '/')),
+    ('admin', os.path.join(STATIC_ROOT, 'admin').replace('\\', '/')),
+    ('kindeditor', os.path.join(STATIC_ROOT, 'kindeditor').replace('\\', '/')),
 )
-
-# STATIC_URL = '/static/static/'
-# STATIC_ROOT = 'static'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-# 在配置了“DEBUG = False”时，使django能加载静态文件
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/static/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/uploads')
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # CKEDITOR_BASEPATH = "static/ckeditor/"
 CKEDITOR_JQUERY_URL = 'jquery/jquery-3.2.1.min.js'
@@ -206,7 +204,7 @@ CKEDITOR_CONFIGS = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.qq.com'
 EMAIL_PORT = 25
-EMAIL_HOST_USER = '915757480@qq.com'  # 发送邮件的邮箱
-EMAIL_HOST_PASSWORD = 'lms101623'  # qq邮箱授权码
+EMAIL_HOST_USER = '********@qq.com'  # 发送邮件的邮箱
+EMAIL_HOST_PASSWORD = '******'  # qq邮箱授权码
 # EMAIL_USE_TLS = True  # 与SMTP服务器通信时，是否启动TLS链接(安全链接)
 EMAIL_FROM = '邮件发送测试<915757480@qq.com>'  # EMAIL_FROM 和 EMAIL_HOST_USER必须一样

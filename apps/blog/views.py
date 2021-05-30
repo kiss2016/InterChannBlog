@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseBadRequest
 from blog.models import Article
 from django.core.paginator import Paginator
 # from django.shortcuts import render_to_response
@@ -12,7 +13,11 @@ from pyecharts.charts import Bar, Pie, Line, Grid
 from pyecharts import options as opts
 from pyecharts.faker import Faker, Collector
 from pyecharts.globals import ThemeType
+from blog.common.common import encrypt_md5, encrypt_base64, decrypt_base64, picToBase64, XmlToJson, sshRunCmd, \
+    generateIdNumber
+from blog.common.common import remove_files, Oracle, getconfig, Logger
 
+remove_files()
 
 # Create your views here.
 
@@ -87,22 +92,153 @@ def piedata(request):
     )
     return json_response.JsonResponse(json.loads(pie))
 
+
 # 访问试图
 class IndexView(APIView):
     def get(self, request, *args, **kwargs):
         return render(request, 'blog/iboss_auto/ibossauto.html')
+
+
 class CQView(APIView):
     def get(self, request, *args, **kwargs):
         return render(request, 'blog/iboss_auto/ibossauto_CQ.html')
+
+
 class SDView(APIView):
     def get(self, request, *args, **kwargs):
         return render(request, 'blog/iboss_auto/ibossauto_SD.html')
+
+
 class HUBView(APIView):
     def get(self, request, *args, **kwargs):
         return render(request, 'blog/iboss_auto/ibossauto_HUB.html')
+
+
 class HEBView(APIView):
     def get(self, request, *args, **kwargs):
         return render(request, 'blog/iboss_auto/ibossauto_HEB.html')
+
+
+from blog.common.common import encrypt_md5, encrypt_base64, decrypt_base64
+
+
+class testTools(object):
+    '''
+    工具类：MD5加密、图片base64加密、base64加解密、xml报文转换为j'son报文、远程调用linux
+    '''
+
+    def connect(request):
+        return render(request, 'blog/test_tools/toolsAuto.html')
+
+    def MD5(request):
+        if request.method == 'GET':
+            plaintext = request.GET.get('plaintext')
+            name = "MD5加密"
+            result = encrypt_md5(plaintext)
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
+        else:
+            plaintext = request.POST.get('plaintext', '')
+            name = "MD5加密"
+            result = encrypt_md5(plaintext)
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
+
+    def base64encode(request):
+        if request.method == 'GET':
+            unencrytxt = request.GET.get('unencrytxt')
+            name = "base64加密"
+            result = encrypt_base64(unencrytxt)
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
+        else:
+            unencrytxt = request.POST.get('unencrytxt', '')
+            name = "base64加密"
+            result = encrypt_base64(unencrytxt)
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
+
+    def base64decode(request):
+        if request.method == 'GET':
+            undecrytxt = request.GET.get('undecrytxt')
+            name = "base64解密"
+            result = decrypt_base64(undecrytxt)
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
+        else:
+            undecrytxt = request.POST.get('undecrytxt', '')
+            name = "base64解密"
+            result = decrypt_base64(undecrytxt)
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
+
+    def base64Pic(request):
+        if request.method == 'GET':
+            base64pic = request.FILES.get('base64pic')
+            if base64pic:
+                return HttpResponseBadRequest("请先上传图片")
+            name = "图片base64加密"
+            result = picToBase64('pic2base64')
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
+        else:
+            base64pic = request.FILES.get('base64pic', '')
+            name = "图片base64加密"
+            result = picToBase64(base64pic)
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
+
+    def certid(request):
+        if request.method == 'GET':
+            gender = request.GET.get('gender')
+            count = request.GET.get('count')
+            name = "身份证生成"
+            result = generateIdNumber.generate_certId(int(gender), int(count))
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': '\n'.join(result), 'name': name})
+        else:
+            gender = request.POST.get('gender', '')
+            count = request.POST.get('count', '')
+            name = "身份证生成"
+            result = generateIdNumber.generate_certId(int(gender), int(count))
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': '\n'.join(result), 'name': name})
+
+    def XmlConvertJson(request):
+        if request.method == 'GET':
+            xmlcontent = request.GET.get('xmlcontent')
+            name = "XML转JSON"
+            result = XmlToJson(xmlcontent)
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
+        else:
+            xmlcontent = request.POST.get('xmlcontent', '')
+            name = "XML转JSON"
+            result = XmlToJson(xmlcontent)
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
+
+    def autoSSH(request):
+        if request.method == 'GET':
+            hostname = request.GET.get('hostname')
+            username = request.GET.get('username')
+            password = request.GET.get('password')
+            cmdlist = request.GET.get('cmdlist')
+            name = "远程执行linux命令"
+            result = sshRunCmd(hostname, username, password, cmdlist)
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
+        else:
+            hostname = request.POST.get('hostname', '')
+            username = request.POST.get('username', '')
+            password = request.POST.get('password', '')
+            cmdlist = request.POST.get('cmdlist', '')
+            Logger().info("主机：%s，用户：%s，密码：%s，执行命令：%s" % (hostname, username, password, cmdlist))
+            name = "远程执行linux命令"
+            result = sshRunCmd(hostname, username, password, cmdlist)
+            Logger().error("执行结果：%s" % result)
+            return render(request, 'blog/test_tools/toolsAuto.html',
+                          context={'result': result, 'name': name})
 
 
 # 索引模块，供urls.py调用

@@ -7,6 +7,8 @@ from django.conf.urls import url
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from rest_framework import routers, serializers, viewsets
+from blog.uploads import upload_image
+from blog.views import testTools
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -24,6 +26,7 @@ router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path(r'ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^uploads/(?P<dir_name>[^/]+)$', upload_image, name='upload_image'),
     # path('content', blog.views.article_content),
     path('index', views.get_index_page,name='index'),
     path('', views.get_index_page,name='index'),
@@ -44,6 +47,14 @@ urlpatterns = [
     url(r'^ibossauto/SDiboss/$', views.SDView.as_view(), name='blog'),
     url(r'^ibossauto/HUBiboss/$', views.HUBView.as_view(), name='blog'),
     url(r'^ibossauto/HEBiboss/$', views.HEBView.as_view(), name='blog'),
+    path('autoTools', testTools.connect),
+    path('md5encry', testTools.MD5),
+    path('base64encry', testTools.base64encode),
+    path('base64decry', testTools.base64decode),
+    path('base64Pic', testTools.base64Pic),
+    path('certId', testTools.certid),
+    path('xmltojson', testTools.XmlConvertJson),
+    path('autossh', testTools.autoSSH),
 ]
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

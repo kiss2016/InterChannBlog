@@ -1,0 +1,152 @@
+{% extends 'base_static.html' %}
+{% block body %}
+<div class="container page-header">
+    <h3 align="center" style="margin-top: 82px">身份证、加解密、远程调用</h3>
+</div>
+<div class="container body-main">
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+            <ul class="nav nav-tabs" id="myTab">
+                <li><a href="#IdCard" data-toggle="tab">身份证</a></li>
+                <li><a href="#MD5" data-toggle="tab">MD5加密</a></li>
+                <li><a href="#base64Pic" data-toggle="tab">图片base64加密</a></li>
+                <li><a href="#base64" data-toggle="tab">base64加解密</a></li>
+                <li><a href="#xmlTojson" data-toggle="tab">xml转json</a></li>
+                <li><a href="#autoSSH" data-toggle="tab">远程执行linux指令</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane" id="IdCard" style="margin-left: 40px">
+                    <!--此处为生成身份证号-->
+                    <form role="form" action="certId" method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            <legend style="font-weight: bold">身份证号生成</legend>
+                        </fieldset>
+                        <span class="form-inline">数量:<input type="number" min="1" value="10" class="form-control"
+                                                            style="width: 140px" name="count" placeholder="请输入生成个数"
+                                                            required></span>
+                        <span class="form-inline" style="margin-left: 50px">性别:<select class="form-control"
+                                                                                       name="gender" placeholder="请选择性别"
+                                                                                       required><option
+                                value="0">女</option><option value="1">男</option></select></span>
+                        <button class="btn btn-sm btn-primary" type="submit">生成</button>
+                        <br><br>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="MD5" style="margin-left: 40px">
+                    <!--此处为MD5加密-->
+                    <form role="form" action="md5encry" method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            <legend style="font-weight: bold">MD5加密</legend>
+                        </fieldset>
+                        <span class="form-inline">明文:<input type="text" class="form-control" style="width: 580px"
+                                                            name="plaintext" autocomplete="off" placeholder="请输入明文"
+                                                            required></span>
+                        <button class="btn btn-sm btn-primary" type="submit">加密</button>
+                        <br><br>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="base64Pic" style="margin-left: 40px">
+                    <!--此处为图片base64加密-->
+                    <form role="form" action="base64Pic" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset>
+                            <legend style="font-weight: bold">图片base64加密</legend>
+                        </fieldset>
+                        <span>
+                            <input type="file" name="base64pic"><br><button class="btn btn-sm btn-primary"
+                                                                            type="submit">加密</button>
+                        </span>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="base64" style="margin-left: 40px">
+                    <!--此处为图片base64加密-->
+                    <form role="form" action="base64encry" method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            <legend style="font-weight: bold">base64加密</legend>
+                        </fieldset>
+                        <span class="form-inline">明文:<input type="text" class="form-control" style="width: 580px"
+                                                            name="unencrytxt" autocomplete="off" placeholder="请输入明文"
+                                                            required></span>
+                        <button class="btn btn-sm btn-primary" type="submit">加密</button>
+                    </form>
+                    <br>
+                    <!--此处为图片base64解密-->
+                    <form role="form" action="base64decry" method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            <legend style="font-weight: bold">base64解密</legend>
+                        </fieldset>
+                        <span class="form-inline">密文:<input type="text" class="form-control" style="width: 580px"
+                                                            name="undecrytxt" autocomplete="off" placeholder="请输入密文"
+                                                            required></span>
+                        <button class="btn btn-sm btn-primary" type="submit">解密</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="xmlTojson" style="margin-left: 40px">
+                    <!--此处为xml报文转为json格式报文-->
+                    <form role="form" action="xmltojson" method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            <legend style="font-weight: bold">XML转换JSON</legend>
+                        </fieldset>
+                        <span class="form-inline">xml报文:</span>
+                        <textarea style="width: 661px; height: 260px;" wrap="off" class="form-control" name="xmlcontent"
+                                  autocomplete="off" required></textarea>
+                        <button class="btn btn-sm btn-primary" type="submit">转换</button>
+                        <br><br>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="autoSSH" style="margin-left: 40px">
+                    <!--此处为远程执行linux指令-->
+                    <form role="form" action="autossh" method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            <legend style="font-weight: bold">远程执行linux指令</legend>
+                        </fieldset>
+                        <span class="form-inline">主机：<input type="text" class="from-control" style="width: 190px"
+                                                            name="hostname" placeholder="请输入主机IP" required></span>
+                        <br><br>
+                        <span class="form-inline">用户：<input type="text" class="from-control" style="width: 190px"
+                                                            name="username" placeholder="请输入用户名" required></span>
+                        <br><br>
+                        <span class="form-inline">密码：<input type="text" class="from-control" style="width: 190px"
+                                                            name="password" placeholder="请输入用户密码" required></span>
+                        <br><br>
+                        <span class="form-inline">命令：<input type="text" class="from-control" style="width: 190px"
+                                                            name="cmdlist" placeholder="请输入命令" required></span>
+                        <span class="help-block" style="font-size: 13px">说明：多条指令请用英文分号;分隔</span>
+                        <button class="btn btn-sm btn-primary" type="submit" data-original-title="请确认指令之后再执行"
+                                data-placement="right" data-toggle="tooltip">执行
+                        </button>
+                        <br>
+                    </form>
+                </div>
+                <script>
+                     /*Bootstrap 3：在页面刷新时保持选中的选项卡*/
+                     $(document).ready(function () {
+                         if (location.hash) {
+                             $("a[href='" + location.hash + "']").tab("show");
+                         }
+                         $(document.body).on("click", "a[data-toggle='tab']", function (event) {
+                             location.hash = this.getAttribute("href");
+                         });
+                     });
+                     $(window).on("popstate", function () {
+                         var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
+                         $("a[href='" + anchor + "']").tab("show");
+                     });
+
+
+
+                </script>
+                <div style="margin: 40px">
+                    <span style="font-size: 16px;font-weight: blod">{{ name|safe }}结果：</span>
+                    <pre style="width: 670px;font-size: 16px;font-family: 'Segoe UI'">{{ result|safe }}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
